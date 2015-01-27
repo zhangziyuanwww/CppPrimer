@@ -8,6 +8,8 @@ class Folder;
 
 class Message
 {
+	friend void swap(Message &, Message &);
+	friend class Folder;
 public:
 	explicit Message(const std::string &str = "") : contents(str) {}
 	Message(const Message&);
@@ -22,7 +24,7 @@ public:
 
 private:
 	void add_to_Folders(const Message&);
-	void remove_to_Folders();
+	void remove_from_Folders();
 
 	void addFldr(Folder *f) { folders.insert(f); }
 	void remFldr(Folder *f) { folders.erase(f); }
@@ -30,6 +32,31 @@ private:
 private:
 	std::string contents;
 	std::set<Folder*> folders;
+};
+
+void swap(Message&, Message&);
+
+class Folder {
+	friend void swap(Message&, Message&);
+	friend class Message;
+public:
+	explicit Folder(const std::string &str = "") :name(str) {}
+	Folder(const Folder &);
+	Folder& operator=(const Folder &);
+	~Folder();
+
+	const std::string& fldr() const { return name; }
+	void print_debug();
+
+private:
+	std::string name;
+	std::set<Message*> msgs;
+
+	void add_to_Message(const Folder&);
+	void remove_from_Message();
+
+	void addMsg(Message *m) { msgs.insert(m); }
+	void remMsg(Message *m) { msgs.erase(m); }
 };
 
 #endif
