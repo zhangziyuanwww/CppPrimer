@@ -12,13 +12,18 @@ int main()
 	m1.save(f1);
 	m2.save(f2);
 
-	swap(m1, m2);
+	// try to switch following statements.
+	//std::swap(m1, m2); // (1)
+	//swap(m1, m2); // (2)
+	//std::swap(f1, f2); // (3)
+	swap(f1, f2); // (4)
+	std::cout << "===============" << std::endl;
+	
+	//f1.print_debug();
+	//f2.print_debug();
 
-	f1.print_debug();
-	f2.print_debug();
-
-	m1.print_debug();
-	m2.print_debug();
+	//m1.print_debug();
+	//m2.print_debug();
 
 	return 0;
 }
