@@ -27,6 +27,7 @@ private:
 	void free();
 	void chk_n_alloc() { if (size() == capacity()) reallocate(); }
 	void reallocate();
+	void alloc_n_move(size_t new_cap);
 
 private:
 	std::string *elements;

@@ -5,7 +5,10 @@ int main()
 {
 	StrVec vec;
 	vec.reserve(6);
-	std::cout << "capacity: " << vec.capacity() << std::endl;
+	std::cout << "capacity(reserve to 6): " << vec.capacity() << std::endl;
+
+	vec.reserve(4);
+	std::cout << "capacity(reserve to 4): " << vec.capacity() << std::endl;
 	
 	vec.push_back("hello");
 	vec.push_back("world");

@@ -10,7 +10,7 @@ std::pair<std::string*, std::string*>
 StrVec::alloc_n_copy(const std::string *b, const std::string *e)
 {
 	auto data = alloc.allocate(e-b);
-	return{ data, std::uninitialized_copy(b, e, data) };
+	return { data, std::uninitialized_copy(b, e, data) };
 }
 
 void StrVec::free()
@@ -43,13 +43,7 @@ StrVec& StrVec::operator = (const StrVec &rhs)
 	return *this;
 }
 
-void StrVec::reallocate()
-{
-	auto newcapacity = size() ? 2 * size() : 1;
-	reserve(newcapacity);
-}
-
-void StrVec::reserve(size_t new_cap)
+void StrVec::alloc_n_move(size_t new_cap)
 {
 	auto newdata = alloc.allocate(new_cap);
 	auto dest = newdata;
@@ -60,6 +54,18 @@ void StrVec::reserve(size_t new_cap)
 	elements = newdata;
 	first_free = dest;
 	cap = elements + new_cap;
+}
+
+void StrVec::reallocate()
+{
+	auto newcapacity = size() ? 2 * size() : 1;
+	alloc_n_move(newcapacity);
+}
+
+void StrVec::reserve(size_t new_cap)
+{
+	if (new_cap <= capacity()) return;
+	alloc_n_move(new_cap);
 }
 
 void StrVec::resize(size_t count)
