@@ -18,6 +18,9 @@ public:
 	std::string *begin() const { return elements; }
 	std::string *end() const { return first_free; }
 
+	void reserve(size_t new_cap);
+	void resize(size_t count);
+
 private:
 	std::pair<std::string*, std::string*> alloc_n_copy(const std::string*, const std::string*);
 	void free();

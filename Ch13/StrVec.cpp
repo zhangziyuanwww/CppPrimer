@@ -46,7 +46,12 @@ StrVec& StrVec::operator = (const StrVec &rhs)
 void StrVec::reallocate()
 {
 	auto newcapacity = size() ? 2 * size() : 1;
-	auto newdata = alloc.allocate(newcapacity);
+	reserve(newcapacity);
+}
+
+void StrVec::reserve(size_t new_cap)
+{
+	auto newdata = alloc.allocate(new_cap);
 	auto dest = newdata;
 	auto elem = elements;
 	for (size_t i = 0; i != size(); ++i)
@@ -54,5 +59,18 @@ void StrVec::reallocate()
 	free();
 	elements = newdata;
 	first_free = dest;
-	cap = elements + newcapacity;
+	cap = elements + new_cap;
+}
+
+void StrVec::resize(size_t count)
+{
+	if (count > size()) {
+		if (count > capacity()) reserve(count * 2);
+		for (size_t i = count - size(); i; --i)
+			alloc.construct(first_free++, "");
+	}
+	else if (count < size()) {
+		while (first_free != elements + count)
+			alloc.destroy(--first_free);
+	}
 }
