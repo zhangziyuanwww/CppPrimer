@@ -64,10 +64,15 @@ void StrVec::reserve(size_t new_cap)
 
 void StrVec::resize(size_t count)
 {
+	resize(count, std::string());
+}
+
+void StrVec::resize(size_t count, const std::string &s)
+{
 	if (count > size()) {
 		if (count > capacity()) reserve(count * 2);
-		for (size_t i = count - size(); i; --i)
-			alloc.construct(first_free++, "");
+		for (size_t i = size(); i != count; ++i)
+			alloc.construct(first_free++, s);
 	}
 	else if (count < size()) {
 		while (first_free != elements + count)

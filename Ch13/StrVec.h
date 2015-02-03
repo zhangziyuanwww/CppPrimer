@@ -20,6 +20,7 @@ public:
 
 	void reserve(size_t new_cap);
 	void resize(size_t count);
+	void resize(size_t count, const std::string&);
 
 private:
 	std::pair<std::string*, std::string*> alloc_n_copy(const std::string*, const std::string*);
