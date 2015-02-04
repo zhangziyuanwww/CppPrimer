@@ -20,6 +20,9 @@ public:
 	std::string *begin() const { return elements; }
 	std::string *end() const { return first_free; }
 
+	std::string& at(size_t pos) { return *(elements + pos); }
+	const std::string& at(size_t pos) const { return *(elements + pos); }
+
 	void reserve(size_t new_cap);
 	void resize(size_t count);
 	void resize(size_t count, const std::string&);

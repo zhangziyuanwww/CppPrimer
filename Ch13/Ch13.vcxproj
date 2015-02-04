@@ -81,11 +81,13 @@
   <ItemGroup>
     <ClInclude Include="Message.h" />
     <ClInclude Include="StrVec.h" />
+    <ClInclude Include="TextQuery.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Message.cpp" />
     <ClCompile Include="StrVec.cpp" />
-    <ClCompile Include="StrVecMain.cpp" />
+    <ClCompile Include="TextQuery.cpp" />
+    <ClCompile Include="TextQueryMain.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
