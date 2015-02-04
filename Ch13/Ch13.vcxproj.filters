@@ -35,7 +35,7 @@
     <ClCompile Include="TextQuery.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextQueryMain.cpp">
+    <ClCompile Include="StrVecMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

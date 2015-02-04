@@ -1,4 +1,5 @@
 #include "StrVec.h"
+#include <algorithm> // for_each
 
 void StrVec::push_back(const std::string &s)
 {
@@ -16,8 +17,7 @@ StrVec::alloc_n_copy(const std::string *b, const std::string *e)
 void StrVec::free()
 {
 	if (elements) {
-		for (auto p = first_free; p != elements;)
-			alloc.destroy(--p);
+		for_each(elements, first_free, [this](std::string &rhs){ alloc.destroy(&rhs); });
 		alloc.deallocate(elements, cap - elements);
 	}
 }
