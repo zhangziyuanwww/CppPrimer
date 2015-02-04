@@ -3,12 +3,14 @@
 
 #include <memory>
 #include <string>
+#include <initializer_list>
 
 class StrVec
 {
 public:
 	StrVec() : elements(nullptr), first_free(nullptr), cap(nullptr) {}
 	StrVec(const StrVec&);
+	StrVec(std::initializer_list<std::string>);
 	StrVec& operator=(const StrVec&);
 	~StrVec();
 
@@ -28,6 +30,7 @@ private:
 	void chk_n_alloc() { if (size() == capacity()) reallocate(); }
 	void reallocate();
 	void alloc_n_move(size_t new_cap);
+	void range_initialize(const std::string*, const std::string*);
 
 private:
 	std::string *elements;

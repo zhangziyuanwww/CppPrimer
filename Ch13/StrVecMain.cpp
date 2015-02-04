@@ -24,4 +24,10 @@ int main()
 	for (auto i = vec.begin(); i != vec.end(); ++i)
 		std::cout << *i << std::endl;
 	std::cout << "-EOF-" << std::endl;
+
+	StrVec vec_list{"hello", "world", "pezy"};
+
+	for (auto i = vec_list.begin(); i != vec_list.end(); ++i)
+		std::cout << *i << " ";
+	std::cout << std::endl;
 }

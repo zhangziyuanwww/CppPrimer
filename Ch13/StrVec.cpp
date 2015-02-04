@@ -22,11 +22,21 @@ void StrVec::free()
 	}
 }
 
-StrVec::StrVec(const StrVec &rhs)
+void StrVec::range_initialize(const std::string *first, const std::string *last)
 {
-	auto newdata = alloc_n_copy(rhs.begin(), rhs.end());
+	auto newdata = alloc_n_copy(first, last);
 	elements = newdata.first;
 	first_free = cap = newdata.second;
+}
+
+StrVec::StrVec(const StrVec &rhs)
+{
+	range_initialize(rhs.begin(), rhs.end());
+}
+
+StrVec::StrVec(std::initializer_list<std::string> il)
+{
+	range_initialize(il.begin(), il.end());
 }
 
 StrVec::~StrVec()
