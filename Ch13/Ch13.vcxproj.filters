@@ -24,6 +24,9 @@
     <ClInclude Include="TextQuery.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="String.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Message.cpp">
@@ -35,7 +38,10 @@
     <ClCompile Include="TextQuery.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StrVecMain.cpp">
+    <ClCompile Include="String.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StringMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

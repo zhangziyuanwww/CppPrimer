@@ -80,13 +80,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Message.h" />
+    <ClInclude Include="String.h" />
     <ClInclude Include="StrVec.h" />
     <ClInclude Include="TextQuery.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Message.cpp" />
+    <ClCompile Include="String.cpp" />
+    <ClCompile Include="StringMain.cpp" />
     <ClCompile Include="StrVec.cpp" />
-    <ClCompile Include="StrVecMain.cpp" />
     <ClCompile Include="TextQuery.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
