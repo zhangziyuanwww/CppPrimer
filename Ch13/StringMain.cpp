@@ -41,7 +41,6 @@ int main()
 	svec.push_back("good job");
 
 	for (const auto &s : svec) {
-		std::copy(s.begin(), s.end(), std::ostream_iterator<char>(std::cout));
-		std::cout << std::endl;
+		std::cout << s.c_str() << std::endl;
 	}
 }
