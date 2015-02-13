@@ -24,7 +24,7 @@ int main()
 
 	String s0;
 	String s1("hello");
-	String s2(s0);
+	String s2(std::move(s0));
 	String s3 = s1;
 	String s4(text);
 	s2 = s1;
@@ -36,7 +36,7 @@ int main()
 	String s5 = baz();
 
 	std::vector<String> svec;
-	svec.push_back(s0);
+	//svec.push_back(s0);
 	svec.push_back(s1);
 	svec.push_back(s2);
 	svec.push_back(s3);

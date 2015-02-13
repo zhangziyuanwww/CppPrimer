@@ -41,7 +41,7 @@
     <ClCompile Include="String.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StrVecMain.cpp">
+    <ClCompile Include="StringMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

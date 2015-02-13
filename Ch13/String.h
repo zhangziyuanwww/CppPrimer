@@ -3,6 +3,12 @@
 
 #include <memory>
 
+#ifndef _MSC_VER
+#define NOEXCEPT noexcept
+#else
+#define NOEXCEPT
+#endif
+
 class String
 {
 public:
@@ -10,6 +16,8 @@ public:
 	String(const char *);
 	String(const String&);
 	String& operator=(const String&);
+	String(String &&) NOEXCEPT;
+	String& operator=(String&&) NOEXCEPT;
 	~String();
 
 	const char *c_str() const { return elements; }
