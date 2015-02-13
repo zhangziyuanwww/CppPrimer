@@ -5,13 +5,21 @@
 #include <string>
 #include <initializer_list>
 
+#ifndef _MSC_VER
+#define NOEXCEPT noexcept
+#else
+#define NOEXCEPT
+#endif
+
 class StrVec
 {
 public:
 	StrVec() : elements(nullptr), first_free(nullptr), cap(nullptr) {}
-	StrVec(const StrVec&);
 	StrVec(std::initializer_list<std::string>);
+	StrVec(const StrVec&);
 	StrVec& operator=(const StrVec&);
+	StrVec(StrVec&&) NOEXCEPT;
+	StrVec& operator=(StrVec&&) NOEXCEPT;
 	~StrVec();
 
 	void push_back(const std::string&);
