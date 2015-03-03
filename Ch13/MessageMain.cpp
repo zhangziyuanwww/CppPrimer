@@ -25,9 +25,13 @@ int main()
 	//m1.print_debug();
 	//m2.print_debug();
 
-	Folder newFolder(std::move(Folder("mu's folder")));
-	m1.save(newFolder);
+	Folder *pF = new Folder("mu's folder");
+	m1.save(*pF);
 
+	Folder newFolder = std::move(*pF);
+
+	f1.print_debug();
+	f2.print_debug();
 	newFolder.print_debug();
 
 	return 0;
