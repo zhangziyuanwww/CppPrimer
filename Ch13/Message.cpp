@@ -80,6 +80,15 @@ void Message::print_debug()
 	std::cout << std::endl;
 }
 
+Message& Message::operator = (Message &&rhs) NOEXCEPT
+{
+	remove_from_Folders();
+	contents = std::move(rhs.contents);
+	folders = std::move(rhs.folders);
+	std::cout << "Message members moved" << std::endl; // debug
+	return *this;
+}
+
 // Folder Implementation
 
 void swap(Folder &lhs, Folder &rhs)
@@ -146,4 +155,13 @@ void Folder::print_debug()
 	for (auto m : msgs)
 		std::cout << m->msg() << " ";
 	std::cout << std::endl;
+}
+
+Folder& Folder::operator=(Folder &&rhs) NOEXCEPT
+{
+	remove_from_Message();
+	name = std::move(rhs.name);
+	msgs = std::move(rhs.msgs);
+	std::cout << "Folder members moved" << std::endl; // debug
+	return *this;
 }

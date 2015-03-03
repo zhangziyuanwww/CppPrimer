@@ -4,6 +4,12 @@
 #include <string>
 #include <set>
 
+#ifndef _MSC_VER
+#define NOEXCEPT noexcept
+#else
+#define NOEXCEPT
+#endif
+
 class Folder;
 
 class Message
@@ -15,6 +21,8 @@ public:
 	explicit Message(const std::string &str = "") : contents(str) {}
 	Message(const Message&);
 	Message& operator=(const Message&);
+	Message(Message &&m) NOEXCEPT : contents(std::move(m.contents)), folders(std::move(m.folders)) {}
+	Message& operator=(Message&&) NOEXCEPT;
 	~Message();
 
 	void save(Folder&);
@@ -45,6 +53,8 @@ public:
 	explicit Folder(const std::string &str = "") :name(str) {}
 	Folder(const Folder &);
 	Folder& operator=(const Folder &);
+	Folder(Folder &&f) NOEXCEPT : name(std::move(f.name)), msgs(std::move(f.msgs)) {}
+	Folder& operator=(Folder &&) NOEXCEPT;
 	~Folder();
 
 	const std::string& fldr() const { return name; }

@@ -86,8 +86,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Message.cpp" />
+    <ClCompile Include="MessageMain.cpp" />
     <ClCompile Include="String.cpp" />
-    <ClCompile Include="StringMain.cpp" />
     <ClCompile Include="StrVec.cpp" />
     <ClCompile Include="TextQuery.cpp" />
   </ItemGroup>

@@ -41,7 +41,7 @@
     <ClCompile Include="String.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="StringMain.cpp">
+    <ClCompile Include="MessageMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
