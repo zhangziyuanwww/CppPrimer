@@ -3,9 +3,7 @@
 
 int main()
 {
-	StrBlob sb;
-	sb.push_back("hello");
-	sb.push_back("world");
+	StrBlob sb{ "Hello", "World", "Pezy" };
 
 	for (ConstStrBlobPtr iter = sb.cbegin(); iter != sb.cend(); iter.incr()) {
 		std::cout << iter.deref() << " ";

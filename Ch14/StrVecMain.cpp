@@ -1,5 +1,6 @@
 #include "StrVec.h"
 #include <iostream>
+#include <vector>
 
 int main()
 {
@@ -29,5 +30,13 @@ int main()
 
 	for (auto i = vec_list.begin(); i != vec_list.end(); ++i)
 		std::cout << *i << " ";
+	std::cout << std::endl;
+
+	// Test operator==
+
+	const StrVec const_vec_list{ "hello", "world", "pezy" };
+	if (vec_list == const_vec_list)
+		for (const auto &str : const_vec_list)
+			std::cout << str << " ";
 	std::cout << std::endl;
 }

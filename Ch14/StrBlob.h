@@ -28,6 +28,12 @@ using std::make_shared; using std::shared_ptr;
 
 #include <exception>
 
+#ifndef _MSC_VER
+#define NOEXCEPT noexcept
+#else
+#define NOEXCEPT
+#endif
+
 class StrBlobPtr;
 class ConstStrBlobPtr;
 
@@ -51,8 +57,8 @@ public:
 	StrBlob(const StrBlob &sb) : data(make_shared<vector<string>>(*sb.data)) {}
 	StrBlob& operator=(const StrBlob&);
 
-	StrBlob(StrBlob &&rhs) : data(std::move(rhs.data)) {}
-	StrBlob& operator=(StrBlob &&);
+	StrBlob(StrBlob &&rhs) NOEXCEPT : data(std::move(rhs.data)) {}
+	StrBlob& operator=(StrBlob &&) NOEXCEPT;
 
 	StrBlobPtr begin();
 	StrBlobPtr end();
@@ -67,8 +73,10 @@ public:
 	void push_back(string &&s) { data->push_back(std::move(s)); }
 
 	inline void pop_back();
-	inline const string& front();
-	inline const string& back();
+	inline string& front();
+	inline string& back();
+	inline const string& front() const;
+	inline const string& back() const;
     
 private:
 	inline void check(size_type, const string&) const;
@@ -85,13 +93,25 @@ inline void StrBlob::pop_back()
 	data->pop_back();
 }
 
-inline const string& StrBlob::front() 
+inline string& StrBlob::front()
 {
 	check(0, "front on empty StrBlob");
 	return data->front();
 }
 
-inline const string& StrBlob::back()
+inline string& StrBlob::back()
+{
+	check(0, "back on empty StrBlob");
+	return data->back();
+}
+
+inline const string& StrBlob::front() const
+{
+	check(0, "front on empty StrBlob");
+	return data->front();
+}
+
+inline const string& StrBlob::back() const
 {
 	check(0, "back on empty StrBlob");
 	return data->back();

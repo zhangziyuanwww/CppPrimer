@@ -1,5 +1,5 @@
 #include "StrVec.h"
-#include <algorithm> // for_each
+#include <algorithm> // for_each, equal
 
 void StrVec::push_back(const std::string &s)
 {
@@ -112,4 +112,14 @@ StrVec& StrVec::operator = (StrVec &&rhs) NOEXCEPT
 		rhs.elements = rhs.first_free = rhs.cap = nullptr;
 	}
 	return *this;
+}
+
+bool operator==(const StrVec &lhs, const StrVec &rhs)
+{
+	return (lhs.size() == rhs.size() && std::equal(lhs.begin(), lhs.end(), rhs.begin()));
+}
+
+bool operator!=(const StrVec &lhs, const StrVec &rhs)
+{
+	return !(lhs == rhs);
 }

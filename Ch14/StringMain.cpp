@@ -3,13 +3,16 @@
 #include <iostream>
 #include <algorithm>
 #include <iterator>
+#include <string>
 
 void foo(String x)
 {
+	std::cout << x << std::endl;
 }
 
 void bar(const String& x)
 {
+	std::cout << x.c_str() << std::endl;
 }
 
 String baz()
@@ -29,6 +32,9 @@ int main()
 	String s4(text);
 	s2 = s1;
 
+	if (s2 == s1)
+		std::cout << "s2 == s1" << std::endl;
+
 	foo(s1);
 	bar(s1);
 	foo("temporary");
@@ -45,6 +51,11 @@ int main()
 	svec.push_back("good job");
 
 	for (const auto &s : svec) {
-		std::cout << s.c_str() << std::endl;
+		std::cout << s << std::endl;
 	}
+
+	std::cout << "Input a string: ";
+	String s6;
+	std::cin >> s6;
+	std::cout << s6 << std::endl;
 }
