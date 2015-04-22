@@ -16,6 +16,10 @@
 #include <iterator>
 #include <numeric>
 #include "../include/Sales_item.h"
+//istream & operate>>(istream &is,Sales_data &line)
+{
+return is>>line.xx>>line.xx;
+}
 
 int main()
 {
